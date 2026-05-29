@@ -27,7 +27,7 @@ export default function App() {
         <EventDetails visible={!!confirmedGuest} />
       </div>
       <footer style={styles.footer}>
-        <p style={styles.footerText}>Made with love for Ciaran &amp; Polina · 3 July 2026</p>
+        <p style={styles.footerText}>Made with love for Ciaran &amp; Polina · 4 July 2026</p>
         <p style={styles.footerSub}>Lake Wenatchee North Campground · Washington</p>
       </footer>
     </main>

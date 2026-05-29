@@ -25,7 +25,7 @@ function useCountdown(targetDate) {
 }
 
 export default function Hero({ onScrollToCheck }) {
-  const { days, hours, minutes, seconds } = useCountdown('2026-07-03T09:00:00')
+  const { days, hours, minutes, seconds } = useCountdown('2026-07-04T09:00:00')
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function Hero({ onScrollToCheck }) {
         </h1>
 
         {/* Date & location */}
-        <p style={styles.dateLocation}>3 · July · 2026 &nbsp;·&nbsp; Lake Wenatchee, WA</p>
+        <p style={styles.dateLocation}>4 · July · 2026 &nbsp;·&nbsp; Lake Wenatchee, WA</p>
 
         {/* Thin gold rule */}
         <div style={styles.thinRule} />

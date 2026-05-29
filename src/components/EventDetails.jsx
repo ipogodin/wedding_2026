@@ -1,5 +1,23 @@
 import { useState, useEffect } from 'react'
 
+// ─────────────────────────────────────────────────────────────────
+//  CALENDAR HELPERS
+//  Both functions below control what gets added to the guest's
+//  calendar when they click "Add to Google Calendar" or
+//  "Add to Apple Calendar".
+//
+//  Date/time format: YYYYMMDDTHHMMSS  (24h, local time, no colons)
+//  e.g. 20260704T090000 = July 4 2026 at 9:00 AM
+//
+//  To change the event:
+//    - Start time → edit DTSTART (ICS) and the first half of dates (Google)
+//    - End time   → edit DTEND   (ICS) and the second half of dates (Google)
+//    - Title      → edit SUMMARY (ICS) and text (Google)
+//    - Description → edit DESCRIPTION (ICS) and details (Google)
+//    - Location   → edit LOCATION (ICS) and location (Google)
+// ─────────────────────────────────────────────────────────────────
+
+// Generates and downloads a .ics file — opens in Apple Calendar, Outlook, etc.
 function generateICS() {
   const ics = [
     'BEGIN:VCALENDAR',
@@ -7,12 +25,13 @@ function generateICS() {
     'PRODID:-//Ciaran & Polina Wedding//EN',
     'CALSCALE:GREGORIAN',
     'BEGIN:VEVENT',
-    'DTSTART:20260703T090000',
-    'DTEND:20260706T200000',
+    'DTSTART:20260704T090000',   // ← ceremony start: July 4, 9:00 AM
+    'DTEND:20260704T200000',     // ← ceremony end:   July 4, 8:00 PM
     'SUMMARY:Ciaran & Polina Wedding 💛',
     'DESCRIPTION:Wedding ceremony at 9:00 AM\\nDress code: Yellow (any shade)\\nBring swimsuit\\, tent if needed\\, cozy clothes for the evening fire.',
     'LOCATION:Lake Wenatchee North Campground\\, Sites 101-197\\, Wenatchee National Forest\\, WA',
     'STATUS:CONFIRMED',
+    // Reminder alarm — fires 7 days before (P7D = period of 7 days)
     'BEGIN:VALARM',
     'TRIGGER:-P7D',
     'ACTION:DISPLAY',
@@ -31,12 +50,13 @@ function generateICS() {
   URL.revokeObjectURL(url)
 }
 
+// Builds a Google Calendar "add event" deep-link — opens in the browser.
 function getGoogleCalendarUrl() {
   const params = new URLSearchParams({
     action: 'TEMPLATE',
     text: 'Ciaran & Polina Wedding',
-    dates: '20260702/20260707',
-    details: 'Wedding ceremony at 9:00 AM on July 3rd.\nDress code: Yellow (any shade).\nBring swimsuit, tent if needed, and cozy evening clothes.\nActivities: paddle boarding, swimming, evening fire with marshmallows.',
+    dates: '20260704T090000/20260704T200000', // ← start/end in same string
+    details: 'Wedding ceremony at 9:00 AM on July 4th.\nDress code: Yellow (any shade).\nBring swimsuit, tent if needed, and cozy evening clothes.\nActivities: paddle boarding, swimming, evening fire with marshmallows.',
     location: 'Lake Wenatchee North Campground, Sites 101-197, WA',
   })
   return `https://calendar.google.com/calendar/render?${params}`
@@ -82,7 +102,7 @@ export default function EventDetails({ visible }) {
             icon="📅"
             label="Dates"
             value="July 2–6, 2026"
-            sub="Ceremony 9:00 AM · July 3rd"
+            sub="Ceremony 9:00 AM · July 4th"
           />
           <InfoCard
             icon="📍"

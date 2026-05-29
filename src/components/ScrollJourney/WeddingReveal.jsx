@@ -70,7 +70,7 @@ export default function WeddingReveal({ visible, onScrollToCheck }) {
         <motion.div variants={item} style={styles.divider} />
 
         <motion.p variants={item} style={styles.date}>
-          3 · July · 2026
+          4 · July · 2026
         </motion.p>
 
         <motion.p variants={item} style={styles.location}>
