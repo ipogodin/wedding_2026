@@ -16,7 +16,7 @@ The preloader is the first thing every guest sees. It sets the emotional tone be
 - On repeat visits (cached): plays for under 0.5s — fast enough to feel like an intentional intro, not a loading penalty
 
 **Implementation:**
-```jsx
+```jsx 
 // src/components/Preloader.jsx
 // Uses Promise.all([loadFont(), loadImage(lakePhotoUrl), loadJSON(topoJsonUrl)])
 // Reports per-asset progress via individual state flags
