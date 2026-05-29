@@ -1,0 +1,19 @@
+# Vercel
+.vercel
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Recording helper — contains Mapbox token, not needed in repo
+temp/
+
+# OS
+.DS_Store
