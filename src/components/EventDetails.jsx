@@ -186,7 +186,7 @@ function AppleIcon() {
 const styles = {
   section: {
     background: 'linear-gradient(180deg, #FEFAF2 0%, #FDF6E8 100%)',
-    padding: '5rem 1rem 6rem',
+    padding: 'clamp(2.5rem, 6vw, 5rem) clamp(1rem, 4vw, 2rem) clamp(3rem, 8vw, 6rem)',
     borderTop: '1px solid #E8D8B055',
   },
   container: {
@@ -195,6 +195,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    width: '100%',
   },
   headingRow: {
     display: 'flex',
@@ -306,19 +307,25 @@ const styles = {
     flexWrap: 'wrap',
     justifyContent: 'center',
     marginBottom: '0.75rem',
+    width: '100%',
   },
   calBtn: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: 8,
-    padding: '0.7rem 1.4rem',
+    padding: '0.75rem 1.4rem',
     borderRadius: 40,
     fontFamily: 'var(--font-sans)',
-    fontSize: '0.82rem',
+    fontSize: 'clamp(0.75rem, 2.5vw, 0.82rem)',
     fontWeight: 500,
     cursor: 'pointer',
     textDecoration: 'none',
     transition: 'transform 0.15s',
+    flex: '1 1 200px',
+    maxWidth: 260,
+    minHeight: 48,   // comfortable touch target
+    whiteSpace: 'nowrap',
   },
   calBtnGoogle: {
     background: '#EEF4FF',
